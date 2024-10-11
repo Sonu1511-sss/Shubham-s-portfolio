@@ -1,46 +1,21 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
-// Sample contact methods
 const contactMethods = [
-  {
-    id: 1,
-    title: 'Email',
-    detail: 'Shubhamuprade0@gmail.com',
-    icon: '📧', // You can use actual icons here, like Font Awesome or Material Icons
-  },
-  {
-    id: 2,
-    title: 'Phone',
-    detail: '+91 9977423362',
-    icon: '📞',
-  },
-  {
-    id: 3,
-    title: 'LinkedIn',
-    detail: 'linkedin.com/shubham-uprade',
-    icon: '🔗',
-  },
-  {
-    id: 4,
-    title: 'GitHub',
-    detail: 'https://github.com/Sonu1511-sss',
-    icon: '🐱',
-  },
-  {
-    id: 5,
-    title: 'Location',
-    detail: 'Bhopal, Madhya Pradesh, India',
-    icon: '📍', // Location icon
-  },
+  { id: 1, title: 'Email', detail: 'Shubhamuprade0@gmail.com', icon: '📧' },
+  { id: 2, title: 'Phone', detail: '+91 9977423362', icon: '📞' },
+  { id: 3, title: 'LinkedIn', detail: 'linkedin.com/shubham-uprade', icon: '🔗' },
+  { id: 4, title: 'GitHub', detail: 'https://github.com/Sonu1511-sss', icon: '🐱' },
+  { id: 5, title: 'Location', detail: 'Bhopal, Madhya Pradesh, India', icon: '📍' },
 ];
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    from_name: '',
+    from_email: '',
     message: '',
   });
-
   const [status, setStatus] = useState('');
 
   const handleChange = (e) => {
@@ -51,45 +26,57 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
     setStatus('Sending...');
 
-    // Simulate sending email
-    setTimeout(() => {
-      setStatus('Message sent successfully!');
-      setFormData({ name: '', email: '', message: '' }); // Clear form
-    }, 2000);
+    emailjs
+      .sendForm(
+        'service_fdrkusw',  // Replace with your service ID
+        'template_g7h0uq9',  // Replace with your template ID
+        form.current,
+        'YtkT7-e_NYTsOLza-'  // Replace with your user ID
+      )
+      .then(
+        () => {
+          setStatus('Message sent successfully!');
+          setFormData({ from_name: '', from_email: '', message: '' }); // Clear form
+        },
+        (error) => {
+          console.error('Failed to send message...', error);
+          setStatus('Failed to send message, please try again later.');
+        }
+      );
   };
 
   return (
-    <section className="py-12 mt-10 ">
+    <section className="py-12 mt-10">
       <h2 className="text-center text-4xl font-bold text-purple-500 mb-8">
-        Contact <span className='text-white'>Me</span>
+        Contact <span className="text-white">Me</span>
       </h2>
 
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10">
-        <form onSubmit={handleSubmit} className="p-6 rounded-lg shadow-lg ">
+        <form ref={form} onSubmit={sendEmail} className="p-6 rounded-lg shadow-lg ">
           <div className="mb-4">
             <label className="block text-gray-300 mb-2">Name</label>
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="from_name"
+              value={formData.from_name}
               onChange={handleChange}
               required
-              className="w-full p-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full text-white p-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
           <div className="mb-4">
             <label className="block text-gray-300 mb-2">Email</label>
             <input
               type="email"
-              name="email"
-              value={formData.email}
+              name="from_email"
+              value={formData.from_email}
               onChange={handleChange}
               required
-              className="w-full p-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full text-white p-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
           <div className="mb-4">
@@ -100,7 +87,7 @@ const Contact = () => {
               onChange={handleChange}
               required
               rows="4"
-              className="w-full p-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full text-white p-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
           <button
@@ -111,9 +98,8 @@ const Contact = () => {
           </button>
           {status && <p className="mt-4 text-center text-orange-400">{status}</p>}
         </form>
-
-        {/* Contact Methods Section */}
-        <div className="p-6 rounded-lg shadow-lg ">
+         {/* Contact Methods Section */}
+         <div className="p-6 rounded-lg shadow-lg ">
           <h3 className="text-xl font-bold text-purple-500 mb-4">Contact Methods</h3>
           <ul className="space-y-4">
             {contactMethods.map((method) => (
