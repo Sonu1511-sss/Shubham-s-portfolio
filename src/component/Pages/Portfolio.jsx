@@ -34,7 +34,7 @@ const projects = [
     title: 'E-Cart Ecommerce ',
     description: 'Your go-to online store for quality products at unbeatable prices!.',
     image: './assids/project 5.png', // Replace with your project image URL
-    link: '#',
+    link: 'https://e-cart-project-umber.vercel.app/',
   },
   {
     id: 6,
