@@ -11,9 +11,7 @@ function Navbar() {
       {/* Logo */}
       <h1 className="font-bold text-2xl cursor-pointer">
         <a href="/" className="flex items-center">
-          <span className="text-white">Shubham</span>
-          <span className="text-purple-600">'s</span>
-          <span className="text-purple-600 ml-1">.</span>
+         <img src="assids\Shubham's.png" alt="" className="h-24 w-40" />
         </a>
       </h1>
 

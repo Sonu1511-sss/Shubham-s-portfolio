@@ -9,6 +9,7 @@ const About = () => {
     { name: 'React JS', level: 'w-10/12' },
     { name: 'JavaScript', level: 'w-9/12' },
     { name: 'Node JS', level: 'w-8/12' },
+    { name: 'Java ', level: 'w-6/12' }
   ];
 
   // Stats data

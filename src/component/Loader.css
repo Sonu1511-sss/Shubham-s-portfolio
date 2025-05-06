@@ -1,0 +1,63 @@
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .loader {
+    display: flex;
+    gap: 5px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #f39c12; /* Vibrant yellow color for the text */
+    animation: fadeInOut 1.5s ease-in-out infinite;
+  }
+  
+  .loader span {
+    animation: bounce 1.5s ease-in-out infinite;
+    color: #e74c3c; /* Red color for the letters */
+  }
+  
+  .loader span:nth-child(2) {
+    color: #8e44ad; /* Purple for the second letter */
+  }
+  
+  .loader span:nth-child(3) {
+    color: #3498db; /* Blue for the third letter */
+  }
+  
+  .loader span:nth-child(4) {
+    color: #2ecc71; /* Green for the fourth letter */
+  }
+  
+  .loader span:nth-child(5) {
+    color: #f39c12; /* Yellow for the fifth letter */
+  }
+  
+  .loader span:nth-child(6) {
+    color: #e74c3c; /* Red for the sixth letter */
+  }
+  
+  .loader span:nth-child(7) {
+    color: #8e44ad; /* Purple for the last letter */
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  

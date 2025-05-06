@@ -10,10 +10,10 @@ const projects = [
   },
   {
     id: 2,
-    title: 'Pato Restorent',
-    description: 'Delicious food, cozy ambiance. Experience culinary delights crafted with passiont..',
-    image: './assids/project 2.png', // Replace with your project image URL
-    link: 'https://sonu1511-sss.github.io/restornts-landing/',
+    title: 'Infinity Jobs',
+    description: 'A MERN stack job portal for posting and applying to jobs with user login and responsive design..',
+    image: './assids/Infinity-Jobs-2.png', // Replace with your project image URL
+    link: 'https://job-portel-f-twv1.vercel.app/',
   },
   {
     id: 3,
